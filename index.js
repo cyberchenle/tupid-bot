@@ -31,11 +31,11 @@ const client = new Client({ presence: { status: 'online', activities: [{ name: '
 		Partials.User,
 	] });
 
-client.allCommands = new Collection();
+client.slashCommands = new Collection();
 client.events = new Collection();
-	
+
 require('./handler')(client);
-	
+
 client.events.forEach(event => {
 	if (event.once) {
 		client.once(event.name, (...args) => event.execute(...args));
